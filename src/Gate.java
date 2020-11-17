@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Gate {
@@ -7,10 +8,19 @@ public abstract class Gate {
     protected Connection[] inputs;
     protected OutputNode[] outputs;
 
+    public int width = 60;
+    public int height;
+
+    public Point position = new Point(0,0);
+
     public Gate(String name, int inputSize, int outputSize) {
         this.name = name;
         inputs = new Connection[inputSize];
         outputs = new OutputNode[outputSize];
+        for (int i = 0; i < outputSize; i++) {
+            outputs[i] = new OutputNode();
+        }
+        height = 30 * Math.max(inputs.length, outputs.length);
     }
 
     public int getInputSize() {
@@ -21,7 +31,7 @@ public abstract class Gate {
         return this.outputs.length;
     }
 
-    public abstract void compute();
+    public void compute() {};
 
     public String getName() {
         return this.name;

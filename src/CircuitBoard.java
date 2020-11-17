@@ -12,10 +12,14 @@ public class CircuitBoard {
     }
 
     public void AddInputNode() {
-        inputs.add(new Connection(null, null));
+        //inputs.add(new Connection(null, 3, null, 3));
     }
 
     public void AddOutputNode() {
         outputNodes.add(new OutputNode());
+    }
+
+    public Chip compressIntoChip(String name) {
+        return new Chip(name, inputs.size(), outputNodes.size(), gates);
     }
 }
